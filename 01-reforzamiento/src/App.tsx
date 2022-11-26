@@ -1,11 +1,9 @@
-import { Contador, ContadorConHook, Login, Usuarios } from "./components";
-
-// import { Funciones } from "./typescript/Funciones";
+import { Formulario } from "./components";
 export const App = () => {
   return (
     <div className="mt-2">
       <h1>Introduccion a TS</h1>
-      <Usuarios />
+      <Formulario />
       <hr />
     </div>
   );
