@@ -1,6 +1,10 @@
 import React from 'react';
-import { HolaMundoScreen } from './src/screens';
-
+import { SafeAreaView } from 'react-native';
+import { DimensionesScreen, FlexScreen, PositionScreen } from './src/screens';
 export function App() {
-  return <HolaMundoScreen />;
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <FlexScreen />
+    </SafeAreaView>
+  );
 }
