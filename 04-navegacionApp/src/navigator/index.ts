@@ -1,3 +1,4 @@
-export * from './menuNateralBasito';
-export * from './menuNateral';
-export * from './stackNavigator';
+export * from './MenuNateralBasito';
+export * from './MenuNateral';
+export * from './StackNavigator';
+export * from './Tabs';

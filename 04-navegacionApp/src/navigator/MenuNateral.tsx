@@ -4,7 +4,7 @@ import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
-import { StackNavigator } from './stackNavigator';
+import { StackNavigator } from './StackNavigator';
 import { SettingsScreen } from '../screen/SettingsScreen';
 import {
   Image,
@@ -14,6 +14,7 @@ import {
   View,
 } from 'react-native';
 import { styles } from '../theme';
+import { Tabs } from './Tabs';
 
 //Solucionar el error de reanimatred
 //remove react-native-reanimated
@@ -29,7 +30,7 @@ export const MenuLateral = () => {
         drawerType: width >= 768 ? 'permanent' : 'front',
       }}
       drawerContent={props => <MenuInterno {...props} />}>
-      <Drawer.Screen name="StactNavigator" component={StackNavigator} />
+      <Drawer.Screen name="Tabs" component={Tabs} />
       <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
     </Drawer.Navigator>
   );
@@ -51,12 +52,12 @@ const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
       <View style={styles?.container}>
         <TouchableOpacity
           style={styles?.menuBoton}
-          onPress={() => navigation.navigate('StackNavigator')}>
+          onPress={() => navigation?.navigate('Tabs')}>
           <Text style={styles?.menuTexto}>Navegacion</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles?.menuBoton}
-          onPress={() => navigation.navigate('SettingsScreen')}>
+          onPress={() => navigation?.navigate('SettingsScreen')}>
           <Text style={styles?.menuTexto}>Ajustes</Text>
         </TouchableOpacity>
       </View>

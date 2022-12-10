@@ -1,6 +1,6 @@
 import React from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { StackNavigator } from './stackNavigator';
+import { StackNavigator } from './StackNavigator';
 import { SettingsScreen } from '../screen/SettingsScreen';
 import { useWindowDimensions } from 'react-native';
 
@@ -18,7 +18,7 @@ export const MenuLateralBasico = () => {
         drawerType: width >= 768 ? 'permanent' : 'front',
       }}>
       <Drawer.Screen
-        name="StactNavigador.navigator"
+        name="StactNavigador"
         options={{ title: 'Home' }}
         component={StackNavigator}
       />
