@@ -4,7 +4,6 @@ import {
   DrawerContentComponentProps,
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
-import { StackNavigator } from './StackNavigator';
 import { SettingsScreen } from '../screen/SettingsScreen';
 import {
   Image,
