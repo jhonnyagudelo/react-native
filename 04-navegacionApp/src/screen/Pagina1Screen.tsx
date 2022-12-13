@@ -3,6 +3,7 @@ import { View, Text, Button, TouchableOpacity } from 'react-native';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import { styles } from '../theme/appTheme';
 import { PublicRoutes } from '../model/routes';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 // interface Props extends StackScreenProps<any, any> { }
 interface Props extends DrawerScreenProps<any, any> { }
@@ -26,6 +27,9 @@ const Pagina1Screen = ({ navigation }: Props) => {
                 nombre: 'Pedro',
               })
             }>
+            <Text>
+              <Icon name="body-outline" size={30} color="black" />;
+            </Text>
             <Text style={styles?.botonGrandeTexto}>Pedro</Text>
           </TouchableOpacity>
 
@@ -37,6 +41,10 @@ const Pagina1Screen = ({ navigation }: Props) => {
                 nombre: 'Maria',
               })
             }>
+            <Text>
+              <Icon name="bicycle-outline" size={30} color="black" />;
+            </Text>
+
             <Text style={styles?.botonGrandeTexto}>Maria</Text>
           </TouchableOpacity>
         </View>

@@ -5,6 +5,8 @@ import {
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 import { SettingsScreen } from '../screen/SettingsScreen';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { DrawerActions } from '@react-navigation/native';
 import {
   Image,
   Text,
@@ -25,12 +27,26 @@ export const MenuLateral = () => {
   const { width } = useWindowDimensions();
   return (
     <Drawer.Navigator
-      screenOptions={{
+      screenOptions={({ navigation }) => ({
+        headerStyle: {
+          elevation: 0,
+          shadowOpacity: 0,
+          borderBottomWidth: 0,
+        },
         //drawerPosition:'right'
         //Quitar el icono hamburguesa por defecto del drawer
-        headerShown: false,
+        // headerShown: false,
         drawerType: width >= 768 ? 'permanent' : 'front',
-      }}
+        headerLeft: () => (
+          <TouchableOpacity
+            style={{ marginLeft: 10 }}
+            onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
+            <Text>
+              <Icon name="grid-outline" size={20} color="black" />;
+            </Text>
+          </TouchableOpacity>
+        ),
+      })}
       drawerContent={props => <MenuInterno {...props} />}>
       <Drawer.Screen name="Tabs" options={{ title: '' }} component={Tabs} />
       <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
@@ -53,14 +69,20 @@ const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
       {/*Opciones de menu*/}
       <View style={styles?.container}>
         <TouchableOpacity
-          style={styles?.menuBoton}
+          style={{ ...styles?.menuBoton, flexDirection: 'row' }}
           onPress={() => navigation?.navigate('Tabs')}>
-          <Text style={styles?.menuTexto}>Navegacion</Text>
+          <Text>
+            <Icon name="navigate-outline" size={20} color="black" />;
+          </Text>
+          <Text style={styles?.menuTexto}> Navegacion</Text>
         </TouchableOpacity>
         <TouchableOpacity
-          style={styles?.menuBoton}
+          style={{ ...styles?.menuBoton, flexDirection: 'row' }}
           onPress={() => navigation?.navigate('SettingsScreen')}>
-          <Text style={styles?.menuTexto}>Ajustes</Text>
+          <Text>
+            <Icon name="settings-outline" size={20} color="black" />;
+          </Text>
+          <Text style={styles?.menuTexto}> Ajustes</Text>
         </TouchableOpacity>
       </View>
     </DrawerContentScrollView>

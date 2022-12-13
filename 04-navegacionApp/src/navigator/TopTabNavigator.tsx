@@ -42,24 +42,12 @@ export const TopTabNavigator = () => {
               iconName = 'albums-outline';
               break;
           }
-          return <Text>{iconName}</Text>;
+          return <Icon name={iconName} size={30} color={color} />;
         },
       })}>
-      <Tab.Screen
-        name="ChatScreen"
-        options={{ title: 'Chat' }}
-        component={ChatScreen}
-      />
-      <Tab.Screen
-        name="AlbumsScreen"
-        options={{ title: 'Album' }}
-        component={AlbumsScreen}
-      />
-      <Tab.Screen
-        name="ContactsScreen"
-        options={{ title: 'Contacts' }}
-        component={ContactsScreen}
-      />
+      <Tab.Screen name="Chat" component={ChatScreen} />
+      <Tab.Screen name="Albums" component={AlbumsScreen} />
+      <Tab.Screen name="Contacts" component={ContactsScreen} />
     </Tab.Navigator>
   );
 };
