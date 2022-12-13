@@ -26,10 +26,13 @@ export const MenuLateral = () => {
   return (
     <Drawer.Navigator
       screenOptions={{
+        //drawerPosition:'right'
+        //Quitar el icono hamburguesa por defecto del drawer
+        headerShown: false,
         drawerType: width >= 768 ? 'permanent' : 'front',
       }}
       drawerContent={props => <MenuInterno {...props} />}>
-      <Drawer.Screen name="Tabs" component={Tabs} />
+      <Drawer.Screen name="Tabs" options={{ title: '' }} component={Tabs} />
       <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
     </Drawer.Navigator>
   );
