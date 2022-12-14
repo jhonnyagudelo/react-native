@@ -42,13 +42,13 @@ export const MenuLateral = () => {
             style={{ marginLeft: 10 }}
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
             <Text>
-              <Icon name="grid-outline" size={20} color="black" />;
+              <Icon name="grid-outline" size={20} color="black" />
             </Text>
           </TouchableOpacity>
         ),
       })}
       drawerContent={props => <MenuInterno {...props} />}>
-      <Drawer.Screen name="Tabs" options={{ title: '' }} component={Tabs} />
+      <Drawer.Screen name="Tabs" options={{ title: 'Tab' }} component={Tabs} />
       <Drawer.Screen name="SettingsScreen" component={SettingsScreen} />
     </Drawer.Navigator>
   );
