@@ -1,9 +1,9 @@
 import { View, Text } from 'react-native';
 import React, { useEffect } from 'react';
-import { colors, styles } from '../theme';
+import { styles } from '../theme';
 //npm add -D @types/react-native-vector-icons
-import Icon from 'react-native-vector-icons/Ionicons';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { TouchableIcon } from '../components';
 export const Tab1Screen = () => {
   const { top } = useSafeAreaInsets();
 
@@ -14,16 +14,11 @@ export const Tab1Screen = () => {
     <View style={{ ...styles.globarMargin, marginTop: top }}>
       <Text style={styles.title}>Icono</Text>
       <Text>
-        <Icon name="airplane-outline" size={80} color={colors.primary} />;
-        <Icon
-          name="american-football-outline"
-          size={80}
-          color={colors.primary}
-        />
-        ;
-        <Icon name="bandage-outline" size={80} color={colors.primary} />;
-        <Icon name="bicycle-outline" size={80} color={colors.primary} />;
-        <Icon name="beer-outline" size={80} color={colors.primary} />;
+        <TouchableIcon iconName="airplane-outline" />;
+        <TouchableIcon iconName="american-football-outline" />;
+        <TouchableIcon iconName="bandage-outline" />;
+        <TouchableIcon iconName="bicycle-outline" />;
+        <TouchableIcon iconName="beer-outline" />;
       </Text>
     </View>
   );
