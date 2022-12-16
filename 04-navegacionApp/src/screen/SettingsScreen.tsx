@@ -17,7 +17,7 @@ export const SettingsScreen = () => {
       <Text style={styles.title}>SettingsScreen</Text>
       <Text>{JSON.stringify(authState, null, 4)}</Text>
       {favoriteIcon && (
-        <Icon name={favoriteIcon?.iconName} size={150} color={colors.primary} /> 
+        <Icon name={favoriteIcon?.iconName} size={150} color={colors.primary} />
       )}
     </View>
   );
