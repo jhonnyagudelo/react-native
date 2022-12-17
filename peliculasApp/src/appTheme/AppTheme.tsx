@@ -27,4 +27,7 @@ export const styles = StyleSheet.create({
     borderRadius: 18,
     flex: 1,
   },
+  viewCarousel: {
+    height: 440,
+  },
 });
