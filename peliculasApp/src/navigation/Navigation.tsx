@@ -2,17 +2,20 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import { DetailScreen, HomeScreen } from '../screen';
 import { colors } from '../appTheme';
+import { Movies } from '../interfaces';
 
-const Stack = createStackNavigator();
+export type RootStackParams = {
+  HomeScreen: undefined;
+  DetailScreen: Movies;
+};
+
+const Stack = createStackNavigator<RootStackParams>();
 
 export const Navigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
-        cardStyle: {
-          backgroundColor: colors.wallpaper,
-        },
       }}>
       <Stack.Screen
         name="HomeScreen"
