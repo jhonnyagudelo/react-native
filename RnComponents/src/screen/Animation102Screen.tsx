@@ -6,20 +6,36 @@ export const Animation102Screen = () => {
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: () => true,
-    onPanResponderMove: Animated.event([null, { dx: pan.x, dy: pan.y }], {
-      useNativeDriver: false,
-    }),
-    onPanResponderRelease: () => {
-      Animated.spring(pan, {
-        toValue: { x: 0, y: 0 },
+    onPanResponderMove: Animated.event(
+      [
+        null,
+        {
+          dx: pan.x, // x,y are Animated.Value
+          dy: pan.y,
+        },
+      ],
+      {
         useNativeDriver: false,
-      }).start();
+      },
+    ),
+    onPanResponderRelease: () => {
+      Animated.spring(
+        pan, // Auto-multiplexed
+        {
+          toValue: { x: 0, y: 0 },
+
+          useNativeDriver: false,
+        }, // Back to zero
+      ).start();
     },
   });
 
   return (
     <View style={styles.container}>
-      <Animated.View {...panResponder.panHandlers} style={styles.purpleBox} />
+      <Animated.View
+        {...panResponder.panHandlers}
+        style={[pan.getLayout(), styles.purpleBox]}
+      />
     </View>
   );
 };

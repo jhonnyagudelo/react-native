@@ -2,21 +2,8 @@ import { View, Text, FlatList } from 'react-native';
 import React from 'react';
 import { styles } from '../theme';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { MenuItem } from '../interfaces';
 import { FlatListManuItem } from '../components';
-
-const menuItems: MenuItem[] = [
-  {
-    name: 'Animation 101',
-    icon: 'cube-outline',
-    component: 'Animation101Screen',
-  },
-  {
-    name: 'Animation 102',
-    icon: 'albums-outline',
-    component: 'Animation102Screen',
-  },
-];
+import { menuItems } from '../data';
 
 export const HomeScreen = () => {
   const { top } = useSafeAreaInsets();
@@ -31,8 +18,7 @@ export const HomeScreen = () => {
 
   const itemSeparator = () => {
     return (
-      <View
-        style={{ borderBottomWidth: 1, opacity: 0.4, marginVertical: 8 }}></View>
+      <View style={{ borderBottomWidth: 1, opacity: 0.4, marginVertical: 8 }} />
     );
   };
 
