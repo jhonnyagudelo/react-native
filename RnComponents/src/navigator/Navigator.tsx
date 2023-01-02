@@ -8,6 +8,7 @@ import {
   InfinityScrollScreen,
   ModalScreen,
   SectionListScreen,
+  SlidesScreen,
   SwitchScreen,
   TextInputScreen,
 } from '../screen';
@@ -21,7 +22,7 @@ export const Navigator = () => {
       screenOptions={{
         headerShown: false,
         cardStyle: {
-          backgroundColor: 'white',
+          // backgroundColor: 'white',
         },
       }}>
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
@@ -40,6 +41,7 @@ export const Navigator = () => {
         name="InfinityScrollScreen"
         component={InfinityScrollScreen}
       />
+      <Stack.Screen name="SlidesScreen" component={SlidesScreen} />
     </Stack.Navigator>
   );
 };
