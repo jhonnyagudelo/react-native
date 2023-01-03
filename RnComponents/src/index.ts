@@ -5,3 +5,4 @@ export * from './interfaces';
 export * from './navigator';
 export * from './screen';
 export * from './theme';
+export * from './context';
