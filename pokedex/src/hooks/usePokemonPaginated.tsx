@@ -5,11 +5,12 @@ import { PokemonPaginatedResponse, Result, SimplePokemon } from '../models';
 export const usePokemonPaginated = () => {
   const url = 'https://pokeapi.co/api/v2/pokemon/?limit=40';
   const nextPageUrl = useRef(url);
-
+  const [isLoading, setIsLoading] = useState(true);
   const [simplePokemonList, setSimplePokemonList] = useState<SimplePokemon[]>(
     [],
   );
   const loadPokemons = async () => {
+    setIsLoading(true);
     const resp = await pokemonApi.get<PokemonPaginatedResponse>(
       nextPageUrl.current,
     );
@@ -29,12 +30,15 @@ export const usePokemonPaginated = () => {
       };
     });
     setSimplePokemonList([...simplePokemonList, ...newPokemonList]);
+    setIsLoading(false);
   };
 
   useEffect(() => {
     loadPokemons();
   }, []);
   return {
+    isLoading,
     simplePokemonList,
+    loadPokemons,
   };
 };
