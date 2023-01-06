@@ -29,9 +29,9 @@ export const Tabs = () => {
         },
       }}>
       <Tab.Screen
-        name="MenuLateral"
+        name="Home"
         options={{
-          // headerShown: false,
+          headerShown: false,
           tabBarLabel: 'Home',
           tabBarIcon: ({ color }) => (
             <Icon color={color} size={25} name="home-outline" />
@@ -42,7 +42,7 @@ export const Tabs = () => {
       <Tab.Screen
         name="ProfileScreen"
         options={{
-          // headerShown: false,
+          headerShown: false,
           tabBarLabel: 'Perfil',
           tabBarIcon: ({ color }) => (
             <Icon color={color} size={25} name="person-circle-outline" />
@@ -53,7 +53,7 @@ export const Tabs = () => {
       <Tab.Screen
         name="PartnersScreen"
         options={{
-          // headerShown: false,
+          headerShown: false,
           tabBarLabel: 'Aliados',
           tabBarIcon: ({ color }) => (
             <Icon color={color} size={25} name="book-outline" />

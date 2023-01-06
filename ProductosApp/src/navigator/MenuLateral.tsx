@@ -1,14 +1,11 @@
 import React from 'react';
-import {
-  createDrawerNavigator,
-  DrawerContentComponentProps,
-  DrawerContentScrollView,
-} from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { DrawerActions } from '@react-navigation/native';
-import { Text, TouchableOpacity, useWindowDimensions, View } from 'react-native';
+import { Text, TouchableOpacity, useWindowDimensions } from 'react-native';
+import { PartnersScreen, ProfileScreen } from '../screens';
+import { MenuInterno } from '../components';
 import { Tabs } from './Tabs';
-import { HomeScreen } from '../screens';
 
 const Drawer = createDrawerNavigator();
 
@@ -22,7 +19,7 @@ export const MenuLateral = () => {
           shadowOpacity: 0,
           borderBottomWidth: 0,
         },
-        //drawerPosition:'right'
+        // drawerPosition: 'right',
         //Quitar el icono hamburguesa por defecto del drawer
         // headerShown: false,
         drawerType: width >= 768 ? 'permanent' : 'front',
@@ -37,34 +34,7 @@ export const MenuLateral = () => {
         ),
       })}
       drawerContent={props => <MenuInterno {...props} />}>
-      <Drawer.Screen name="Tabs" options={{ title: 'Tabs' }} component={Tabs} />
-      <Drawer.Screen name="HomeScreen" component={HomeScreen} />
+      <Drawer.Screen name="HomeScreen" options={{ title: '' }} component={Tabs} />
     </Drawer.Navigator>
-  );
-};
-
-const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
-  return (
-    <DrawerContentScrollView>
-      {/*Opciones de menu*/}
-      <View style={{}}>
-        <TouchableOpacity
-          style={{}}
-          onPress={() => navigation?.navigate('HomeScreen')}>
-          <Text>
-            <Icon name="navigate-outline" size={20} color="black" />;
-          </Text>
-          <Text style={{}}> Navegacion</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={{}}
-          onPress={() => navigation?.navigate('Profile')}>
-          <Text>
-            <Icon name="settings-outline" size={20} color="black" />;
-          </Text>
-          <Text style={{}}> Ajustes</Text>
-        </TouchableOpacity>
-      </View>
-    </DrawerContentScrollView>
   );
 };

@@ -1,6 +1,10 @@
 import { Image, View } from 'react-native';
 import React from 'react';
 
+interface Props {
+  uri;
+}
+
 export const Logo = () => {
   return (
     <View style={{ alignItems: 'center' }}>

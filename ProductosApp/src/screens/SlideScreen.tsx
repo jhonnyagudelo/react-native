@@ -101,7 +101,7 @@ export const SlideScreen = ({ navigation }: Props) => {
               activeOpacity={0.8}
               onPress={() => {
                 if (isVisible?.current) {
-                  navigation?.navigate('MenuLateral');
+                  navigation?.replace('MenuLateral');
                 }
               }}>
               <Text style={{ fontSize: 25, color: colors?.white }}>Entrar</Text>
