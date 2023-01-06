@@ -1,14 +1,15 @@
 import { StyleSheet, Text, View } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import React from 'react';
+import { Avatar, Logo, Title } from '../components';
 
 export const HomeScreen = () => {
   return (
-    <View>
-      <Text>HomeScreen</Text>
-      <Icon name="archive-outline" size={30} />
-    </View>
+    <>
+      <Logo />
+      <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+        <Title title="Hola, Jhonny" />
+      </View>
+    </>
   );
 };
-
-const styles = StyleSheet.create({});

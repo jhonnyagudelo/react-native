@@ -2,10 +2,11 @@ import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
 import {
   LoginScreen,
-  HomeScreen,
   ProtectedScreen,
   RegisterScreen,
+  SlideScreen,
 } from '../screens';
+import { MenuLateral } from './MenuLateral';
 
 const Stack = createStackNavigator();
 
@@ -19,7 +20,8 @@ export const Navigator = () => {
         },
       }}>
       <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
+      <Stack.Screen name="SlideScreen" component={SlideScreen} />
+      <Stack.Screen name="MenuLateral" component={MenuLateral} />
       <Stack.Screen name="ProtectedScreen" component={ProtectedScreen} />
       <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
     </Stack.Navigator>

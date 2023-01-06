@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { colors } from './colorTheme';
 
 export const loginStyles = StyleSheet.create({
   formContainer: {
@@ -9,22 +10,22 @@ export const loginStyles = StyleSheet.create({
     marginBottom: 50,
   },
   title: {
-    color: 'white',
+    color: colors?.white,
     fontSize: 30,
     fontWeight: 'bold',
     marginTop: 20,
   },
   label: {
     marginTop: 25,
-    color: 'white',
+    color: colors?.white,
     fontWeight: 'bold',
   },
   inputFiel: {
-    color: 'white',
+    color: colors?.white,
     fontSize: 20,
   },
   inputFieldIos: {
-    borderBottomColor: 'white',
+    borderBottomColor: colors?.white,
     borderBottomWidth: 2,
     paddingBottom: 4,
   },
@@ -34,14 +35,14 @@ export const loginStyles = StyleSheet.create({
   },
   btnLogin: {
     borderWidth: 2,
-    borderColor: 'white',
+    borderColor: colors?.white,
     paddingHorizontal: 20,
     paddingVertical: 5,
     borderRadius: 100,
   },
   btn_text: {
     fontSize: 18,
-    color: 'white',
+    color: colors?.white,
   },
   newUserContainer: {
     alignItems: 'flex-end',

@@ -5,3 +5,4 @@ export * from './models';
 export * from './navigator';
 export * from './screens';
 export * from './theme';
+export * from './utilities';

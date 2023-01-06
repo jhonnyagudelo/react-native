@@ -1,12 +1,13 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
+import { colors } from '../../theme';
 
 export const Background = () => {
   return (
     <View
       style={{
         position: 'absolute',
-        backgroundColor: '#5856D6',
+        backgroundColor: colors?.primaryBlue,
         top: -410,
         width: 1000,
         height: 1200,
@@ -19,5 +20,3 @@ export const Background = () => {
     />
   );
 };
-
-const styles = StyleSheet.create({});
