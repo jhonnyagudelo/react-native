@@ -1,12 +1,26 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { MenuLateral, Navigator } from './src';
+import {
+  NavigationContainer,
+  useNavigationContainerRef,
+} from '@react-navigation/native';
+import { AuthProvider, Navigator } from './src';
+import { useFlipper } from '@react-navigation/devtools';
+
+// const AppState = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
+const AppState = ({ children }: any) => {
+  return <AuthProvider>{children}</AuthProvider>;
+};
 
 const App = () => {
+  const navigationRef = useNavigationContainerRef();
+
+  useFlipper(navigationRef);
   return (
     <NavigationContainer>
-      <Navigator />
+      <AppState>
+        <Navigator />
+      </AppState>
     </NavigationContainer>
   );
 };

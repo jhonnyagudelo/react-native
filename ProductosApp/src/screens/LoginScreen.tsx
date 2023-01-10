@@ -13,19 +13,23 @@ import { loginStyles } from '../theme';
 import { TextInput } from 'react-native-gesture-handler';
 import { useForm } from '../hooks';
 import { StackScreenProps } from '@react-navigation/stack';
+import { useAuthContext } from '../context';
 
 interface Props extends StackScreenProps<any, any> { }
 
 export const LoginScreen = ({ navigation }: Props) => {
-  const { documento, membresia, onChange } = useForm({
-    documento: '',
-    membresia: '',
+  const { signIn } = useAuthContext();
+
+  const { email, password, onChange } = useForm({
+    email: '',
+    password: '',
   });
   const onLogin = () => {
-    console.log({ documento, membresia });
+    console.log({ email, password });
     navigation?.replace('SlideScreen');
     // ocultar teclado
     Keyboard.dismiss();
+    signIn({ correo: email, password });
   };
   return (
     <>
@@ -40,33 +44,37 @@ export const LoginScreen = ({ navigation }: Props) => {
           <Text style={loginStyles?.title}>Login</Text>
           <Text style={loginStyles?.label}>Email</Text>
           <TextInput
-            placeholder="No.Documento"
+            placeholder="Email"
             placeholderTextColor="rgba(255,255,255,0.4)"
-            keyboardType="numeric"
+            keyboardType="email-address"
             underlineColorAndroid="white"
-            onChangeText={value => onChange(value, 'documento')}
-            value={documento}
+            onChangeText={value => onChange(value, 'email')}
+            value={email}
             onSubmitEditing={onLogin}
             style={[
               loginStyles?.inputFiel,
               Platform.OS === 'ios' && loginStyles?.inputFieldIos,
             ]}
             selectionColor="white"
+            autoCapitalize="none"
+            autoCorrect={false}
           />
           <TextInput
-            placeholder="No.Membresía"
+            placeholder="********"
             placeholderTextColor="rgba(255,255,255,0.4)"
-            keyboardType="numeric"
             underlineColorAndroid="white"
-            // secureTextEntry para contraseñas
-            onChangeText={value => onChange(value, 'membresia')}
-            value={membresia}
+            // para contraseñas
+            secureTextEntry
+            onChangeText={value => onChange(value, 'password')}
+            value={password}
             onSubmitEditing={onLogin}
             style={[
               loginStyles?.inputFiel,
               Platform.OS === 'ios' && loginStyles?.inputFieldIos,
             ]}
             selectionColor="white"
+            autoCapitalize="none"
+            autoCorrect={false}
           />
           {/*BTN*/}
           <View style={loginStyles?.botonContainer}>
@@ -80,7 +88,7 @@ export const LoginScreen = ({ navigation }: Props) => {
           <View style={loginStyles?.newUserContainer}>
             <TouchableOpacity
               activeOpacity={0.8}
-              onPress={() => navigation?.replace('SlideScreen')}>
+              onPress={() => navigation?.replace('RegisterScreen')}>
               <Text style={loginStyles?.btn_text}>Nueva membresía</Text>
             </TouchableOpacity>
           </View>
