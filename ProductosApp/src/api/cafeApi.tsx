@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const baseUrl = 'http://kaput-spoon-production.up.railway.app/api';
+const baseURL = 'https://kaput-spoon-production.up.railway.app/api';
 
-const cafeApi = axios.create({ baseUrl });
+const cafeApi = axios.create({ baseURL });
 
 export default cafeApi;
