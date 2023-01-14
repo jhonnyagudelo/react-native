@@ -1,6 +1,8 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
+import { useAuthContext } from '../context';
 import {
+  LoadingScreen,
   LoginScreen,
   ProtectedScreen,
   RegisterScreen,
@@ -13,6 +15,12 @@ import { Tabs } from './Tabs';
 const Stack = createStackNavigator();
 
 export const Navigator = () => {
+  const { status } = useAuthContext();
+
+  if (status === 'checking') {
+    return <LoadingScreen />;
+  }
+
   return (
     <Stack.Navigator
       screenOptions={{
@@ -21,13 +29,20 @@ export const Navigator = () => {
           backgroundColor: 'white',
         },
       }}>
-      <Stack.Screen name="LoginScreen" component={LoginScreen} />
-      <Stack.Screen name="SlideScreen" component={SlideScreen} />
-      <Stack.Screen name="MenuLateral" component={MenuLateral} />
-      <Stack.Screen name="Tabs" component={Tabs} />
-      <Stack.Screen name="ProtectedScreen" component={ProtectedScreen} />
-      <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-      <Stack.Screen name="SiteScreen" component={SiteScreen} />
+      {status !== 'authenticated' ? (
+        <>
+          <Stack.Screen name="LoginScreen" component={LoginScreen} />
+          <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+        </>
+      ) : (
+        <>
+          <Stack.Screen name="SlideScreen" component={SlideScreen} />
+          <Stack.Screen name="SiteScreen" component={SiteScreen} />
+          <Stack.Screen name="MenuLateral" component={MenuLateral} />
+          <Stack.Screen name="Tabs" component={Tabs} />
+          <Stack.Screen name="ProtectedScreen" component={ProtectedScreen} />
+        </>
+      )}
     </Stack.Navigator>
   );
 };

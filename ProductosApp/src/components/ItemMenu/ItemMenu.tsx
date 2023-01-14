@@ -3,12 +3,14 @@ import {
   DrawerContentScrollView,
 } from '@react-navigation/drawer';
 import React from 'react';
-import { TouchableOpacity, View } from 'react-native';
+import { Button, TouchableOpacity, View } from 'react-native';
+import { useAuthContext } from '../../context';
 import { Avatar } from '../Avatar';
 import { Item } from './components';
 import { MenuItemStyle } from './style';
 
 export const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
+  const { logOut } = useAuthContext();
   return (
     <DrawerContentScrollView>
       {/*Opciones de menu*/}
@@ -37,6 +39,9 @@ export const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
           onPress={() => navigation?.navigate('SiteScreen')}>
           <Item itemName="Site" iconName="reader-outline" />
         </TouchableOpacity>
+      </View>
+      <View>
+        <Button title="logout" onPress={logOut} />
       </View>
     </DrawerContentScrollView>
   );

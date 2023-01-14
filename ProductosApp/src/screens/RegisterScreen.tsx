@@ -1,4 +1,5 @@
 import {
+  Alert,
   Keyboard,
   KeyboardAvoidingView,
   Platform,
@@ -8,24 +9,39 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Logo } from '../components';
 import { colors, loginStyles } from '../theme';
 import { useForm } from '../hooks';
 import { StackScreenProps } from '@react-navigation/stack';
+import { useAuthContext } from '../context';
 
 interface Props extends StackScreenProps<any, any> { }
 export const RegisterScreen = ({ navigation }: Props) => {
+  const { signUp, errorMessage, removeError } = useAuthContext();
   const { nombre, email, password, onChange } = useForm({
     nombre: '',
     email: '',
     password: '',
   });
+
+  useEffect(() => {
+    if (errorMessage.length === 0) {
+      return;
+    }
+    Alert.alert('Registro incorrecto', errorMessage, [
+      {
+        text: 'Ok',
+        onPress: removeError,
+      },
+    ]);
+  }, [errorMessage]);
+
   const onRegister = () => {
     console.log({ nombre, email, password });
-    navigation?.replace('HomeScreen');
     // ocultar teclado
     Keyboard.dismiss();
+    signUp({ nombre, correo: email, password });
   };
   return (
     <>

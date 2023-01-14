@@ -6,3 +6,4 @@ export * from './SlideScreen';
 export * from './ProfileScreen';
 export * from './PartnersScreen';
 export * from './SiteScreen';
+export * from './LoadingScreen';
