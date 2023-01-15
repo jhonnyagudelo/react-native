@@ -4,12 +4,16 @@ import {
   NavigationContainer,
   useNavigationContainerRef,
 } from '@react-navigation/native';
-import { AuthProvider, Navigator } from './src';
+import { AuthProvider, Navigator, ProductProvider } from './src';
 import { useFlipper } from '@react-navigation/devtools';
 
 // const AppState = ({ children }: { children: JSX.Element | JSX.Element[] }) => {
 const AppState = ({ children }: any) => {
-  return <AuthProvider>{children}</AuthProvider>;
+  return (
+    <AuthProvider>
+      <ProductProvider>{children}</ProductProvider>
+    </AuthProvider>
+  );
 };
 
 const App = () => {

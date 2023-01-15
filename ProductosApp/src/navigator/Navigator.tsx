@@ -10,6 +10,7 @@ import {
   SlideScreen,
 } from '../screens';
 import { MenuLateral } from './MenuLateral';
+import { ProductsNavigator } from './ProductsNavigator';
 import { Tabs } from './Tabs';
 
 const Stack = createStackNavigator();
@@ -37,6 +38,10 @@ export const Navigator = () => {
       ) : (
         <>
           <Stack.Screen name="SlideScreen" component={SlideScreen} />
+          <Stack.Screen
+            name="ProductsNavigator"
+            component={ProductsNavigator}
+          />
           <Stack.Screen name="SiteScreen" component={SiteScreen} />
           <Stack.Screen name="MenuLateral" component={MenuLateral} />
           <Stack.Screen name="Tabs" component={Tabs} />
