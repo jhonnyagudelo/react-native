@@ -39,6 +39,11 @@ export const MenuInterno = ({ navigation }: DrawerContentComponentProps) => {
           onPress={() => navigation?.navigate('SiteScreen')}>
           <Item itemName="Site" iconName="reader-outline" />
         </TouchableOpacity>
+        <TouchableOpacity
+          style={MenuItemStyle?.menuBoton}
+          onPress={() => navigation?.navigate('ProductsNavigator')}>
+          <Item itemName="Productos" iconName="reader-outline" />
+        </TouchableOpacity>
       </View>
       <View>
         <Button title="logout" onPress={logOut} />

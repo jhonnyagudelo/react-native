@@ -31,6 +31,7 @@ export const AuthProvider = ({ children }: any) => {
     checkToken();
   }, []);
 
+  //persistencia de datos
   const checkToken = async () => {
     const token = await AsyncStorage.getItem('token');
     if (!token) {
