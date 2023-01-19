@@ -1,11 +1,11 @@
-import { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import cafeApi from '../api/cafeApi';
 import { Producto, ProductsResponse } from '../models';
 
 type ProductsContextProps = {
   products: Producto[];
   loadProducts: () => Promise<void>;
-  addProduct: (categoryId: string, productName: string) => Promise<void>;
+  addProduct: (categoryId: string, productName: string) => Promise<Producto>;
   updateProduct: (
     categoryId: string,
     productName: string,
@@ -29,16 +29,47 @@ export const ProductProvider = ({ children }: any) => {
     const res = await cafeApi?.get<ProductsResponse>('/productos?limit=50');
     setProducts([...res?.data?.productos]);
   };
-  const addProduct = async (categoryId: string, productName: string) => { };
+
+  const addProduct = async (
+    categoryId: string,
+    productName: string,
+  ): Promise<Producto> => {
+    const res = await cafeApi?.post<Producto>('/productos', {
+      nombre: productName,
+      categoria: categoryId,
+    });
+    setProducts([...products, res?.data]);
+    return res?.data;
+  };
   const updateProduct = async (
     categoryId: string,
     productName: string,
     productId: string,
-  ) => { };
-  const deleteProduct = async (id: string) => { };
-  const loadProductById = (id: string) => {
-    throw new Error('not implements');
+  ) => {
+    const res = await cafeApi?.post<Producto>('/productos', {
+      nombre: productName,
+      categoria: categoryId,
+    });
+    setProducts(
+      products?.map(prod => {
+        return prod?._id === productId ? res?.data : prod;
+      }),
+    );
   };
+  const deleteProduct = async (id: string) => {
+    try {
+      const res = await cafeApi?.delete<Producto>(`/productos${id}`);
+      setProducts([...products, res?.data]);
+    } catch (e: any) {
+      console.log(e?.response?.data?.errors[0]?.msg);
+    }
+  };
+  //
+  const loadProductById = async (id: string): Promise<Producto> => {
+    const res = await cafeApi?.get<Producto>(`productos/${id}`);
+    return res?.data;
+  };
+
   const uploadImage = async (data: any, id: string) => { };
 
   return (
