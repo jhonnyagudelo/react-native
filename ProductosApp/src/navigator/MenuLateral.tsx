@@ -6,6 +6,7 @@ import { Text, TouchableOpacity, useWindowDimensions } from 'react-native';
 import { PartnersScreen, ProfileScreen } from '../screens';
 import { MenuInterno } from '../components';
 import { Tabs } from './Tabs';
+import { colors } from '../theme';
 
 const Drawer = createDrawerNavigator();
 
@@ -28,7 +29,11 @@ export const MenuLateral = () => {
             style={{ marginLeft: 10 }}
             onPress={() => navigation.dispatch(DrawerActions.toggleDrawer())}>
             <Text>
-              <Icon name="ellipsis-vertical-outline" size={20} color="black" />
+              <Icon
+                name="ellipsis-vertical-outline"
+                size={50}
+                color={colors?.white}
+              />
             </Text>
           </TouchableOpacity>
         ),

@@ -66,8 +66,12 @@ export const ProductProvider = ({ children }: any) => {
   };
   //
   const loadProductById = async (id: string): Promise<Producto> => {
-    const res = await cafeApi?.get<Producto>(`productos/${id}`);
-    return res?.data;
+    try {
+      const res = await cafeApi?.get<Producto>(`/productos/${id}`);
+      return res?.data;
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const uploadImage = async (data: any, id: string) => { };
